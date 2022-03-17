@@ -15,4 +15,4 @@ Curtain makes changes on-the-fly as to the website that gets loaded *before it e
 [LibreJS](https://www.gnu.org/software/librejs/), as described by the GNU Project:
 > GNU LibreJS aims to address the JavaScript problem described in Richard Stallman's article [The JavaScript Trap](https://www.gnu.org/philosophy/javascript-trap.html). LibreJS is a free add-on for GNU IceCat and other Mozilla-based browsers. It blocks nonfree nontrivial JavaScript while allowing JavaScript that is free and/or trivial.
 
-The Curtain script is compatible with LibreJS: it does not need to be manually whitelisted. Note that websites embedded with Curtain may not be compatible with LibreJS.
+The Curtain script is libre software, and is compatible with LibreJS: it does not need to be manually whitelisted. Note that websites embedded with Curtain may not be compatible with LibreJS.
