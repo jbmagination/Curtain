@@ -11,11 +11,27 @@ know how you're here; this repository should be private.
 class Curtain {
   constructor(url, options) {
     this.url = new URL(url);
-    this.options = options;
+    const loadedUrl = this.url;
     
-    if (this.url.hostname == 'youtube.com') {
-      // default youtube-nocookie
-      // piped / invidious (this.options)
+    // set default options
+    this.options.iframeOptions = options.iframeOptions || {"referrerpolicy":"no-referrer"};
+    this.options.iframeOptions.referrerpolicy = options.iframeOptions.referrerpolicy || "no-referrer";
+    this.options.youtubeBypass = options.youtubeBypass || true;
+    this.options.youtubeBypassMethod = options.youtubeBypassMethod || "nocookie";
+    
+    if ((this.url.hostname == "youtube.com") && (options.youtubeBypass == true)) {
+      switch (options.youtubeBypassMethod) {
+        case "nocookie":
+          loadedUrl.hostname = "youtube-nocookie.com";
+          break;
+        case "invidious":
+          // will allow for multiple instances later
+          loadedUrl.hostname = "invidious.snopyta.org";
+          break;
+        case "piped":
+          // will allow for multiple instances later
+          loadedUrl.hostname = "piped.kavin.rocks";
+      }
     }
   }
 }
