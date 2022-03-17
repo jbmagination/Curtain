@@ -8,7 +8,7 @@ bugs. Use `curtain.min.js` instead. If it doesn't exist, then I don't
 know how you're here; this repository should be private.
 */
 
-class Curtain {
+class Curtain { 
   constructor(url, options) {
     this.url = new URL(url);
     const loadedUrl = this.url;
@@ -16,22 +16,28 @@ class Curtain {
     // set default options
     this.options.iframeOptions = options.iframeOptions || {"referrerpolicy":"no-referrer"};
     this.options.iframeOptions.referrerpolicy = options.iframeOptions.referrerpolicy || "no-referrer";
-    this.options.youtubeBypass = options.youtubeBypass || true;
-    this.options.youtubeBypassMethod = options.youtubeBypassMethod || "nocookie";
+    this.options.youtubeBypass = options.youtubeBypass || "nocookie";
+    this.options.invidiousInstance = options.invidiousInstance || "invidious.io";
+    this.options.pipedInstance = options.invidiousInstance || "piped.kavin.rocks";
     
-    if (((this.url.hostname == "youtube.com") || (this.url.hostname == "www.youtube.com")) && (options.youtubeBypass == true)) {
-      switch (options.youtubeBypassMethod) {
-        case "nocookie":
-          loadedUrl.hostname = "youtube-nocookie.com";
+    if (((this.url.hostname == "youtube.com") || (this.url.hostname == "www.youtube.com"))) {
+      switch (this.options.youtubeBypass) {
+        case "none":
+          loadedUrl.hostname = this.url.hostname;
+          break;
+        case false:
+          loadedUrl.hostname = this.url.hostname;
           break;
         case "invidious":
-          // will allow for multiple instances later
-          loadedUrl.hostname = "invidious.snopyta.org";
+          loadedUrl.hostname = this.options.invidiousInstance;
           break;
         case "piped":
-          // will allow for multiple instances later
-          loadedUrl.hostname = "piped.kavin.rocks";
+          loadedUrl.hostname = this.options.pipedInstance;
+          break;
+        default:
+          loadedUrl.hostname = "youtube-nocookie.com";
       }
+      this.options.iframeOptions.autoplay = options.iframeOptions.autoplay || 1;
     }
   }
 }
