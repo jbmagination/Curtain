@@ -19,7 +19,7 @@ class Curtain {
     this.options.youtubeBypass = options.youtubeBypass || true;
     this.options.youtubeBypassMethod = options.youtubeBypassMethod || "nocookie";
     
-    if ((this.url.hostname == "youtube.com") && (options.youtubeBypass == true)) {
+    if (((this.url.hostname == "youtube.com") || (this.url.hostname == "www.youtube.com")) && (options.youtubeBypass == true)) {
       switch (options.youtubeBypassMethod) {
         case "nocookie":
           loadedUrl.hostname = "youtube-nocookie.com";
