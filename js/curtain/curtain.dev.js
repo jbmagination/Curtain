@@ -30,12 +30,13 @@ window.Curtain = function Curtain(dir, options) {
       }
       curtainModule.src = dir + slash + 'modules/' + new URL(iframe.src).host + '.js';
       document.currentScript.parentNode.insertBefore(curtainModule, document.currentScript.nextSibling);
+      var urlToLoad = window.Curtain.module[new URL(iframe.src).host](loadedUrl, this.options.moduleOptions);
     }
     // base divs
     var curtainDiv = document.createElement('div');
     var frameDiv = document.createElement('div');
     var infoDiv = document.createElement('div');
-    infoDiv.innerHTML = '<p style="font-size:50%"><i style="font-size:50%">Heads up: this embed will serve content from <a href="' + (window.Curtain.module[new URL(iframe.src).host].protocol || loadedUrl.protocol) + (window.Curtain.module[new URL(iframe.src).host].protocol || loadedUrl.host) + '">' + (window.Curtain.module[new URL(iframe.src).host].host || loadedUrl.host) + '</a>, a third-party website.</i> <a style="font-size:50%" href="#">Learn more...</a></p>'
+    infoDiv.innerHTML = '<p style="font-size:50%"><i style="font-size:50%">Heads up: this embed will serve content from <a href="' + (urlToLoad.protocol || loadedUrl.protocol) + (urlToLoad.host || loadedUrl.host) + '">' + (window.Curtain.module[new URL(iframe.src).host].host || loadedUrl.host) + '</a>, a third-party website.</i> <a style="font-size:50%" href="#">Learn more...</a></p>'
    
     curtainDiv.appendChild(frameDiv);
     curtainDiv.appendChild(infoDiv);
