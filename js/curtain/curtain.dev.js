@@ -17,7 +17,7 @@ window.Curtain = function Curtain(dir, options) {
   // replace all iframes
   const iframes = Array.from(document.getElementsByTagName('iframe'));
   iframes.forEach(iframe => {
-    const loadedUrl = iframe.src;
+    const loadedUrl = new URL(iframe.src);
     if ((iframe.src.protocol == 'http:') && (this.options.httpsUpgrade == true)) { loadedUrl.protocol = 'https:'; };
     if (!(window.Curtain.module[new URL(iframe.src).hostname]) || false) {
       // load module
@@ -35,7 +35,7 @@ window.Curtain = function Curtain(dir, options) {
     var curtainDiv = document.createElement('div');
     var frameDiv = document.createElement('div');
     var infoDiv = document.createElement('div');
-    infoDiv.innerHTML = '<p style="font-size:25%"><i style="font-size:25%">Heads up: this embed will serve content from <a href="' + (window.Curtain.module[new URL(iframe.src).hostname] || loadedUrl.hostname) + '">' + (window.Curtain.module[new URL(iframe.src).hostname] || loadedUrl.hostname) + '</a>, a third-party website.</i><a style="font-size:25%" href="#">Learn more...</a></p>'
+    infoDiv.innerHTML = '<p style="font-size:50%"><i style="font-size:50%">Heads up: this embed will serve content from <a href="' + (window.Curtain.module[new URL(iframe.src).hostname] || loadedUrl.hostname) + '">' + (window.Curtain.module[new URL(iframe.src).hostname] || loadedUrl.hostname) + '</a>, a third-party website.</i> <a style="font-size:50%" href="#">Learn more...</a></p>'
    
     curtainDiv.appendChild(frameDiv);
     curtainDiv.appendChild(infoDiv);
