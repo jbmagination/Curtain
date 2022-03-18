@@ -13,52 +13,14 @@ window.Curtain = function Curtain(url, options) {
   const loadedUrl = this.url;
     
   // set default options
-  this.options.httpsUpgrade = options.httpsUpgrade || true;
-  this.options.iframeOptions = options.iframeOptions || {"referrerpolicy":"no-referrer"};
-  this.options.iframeOptions.referrerpolicy = options.iframeOptions.referrerpolicy || "no-referrer";
-  this.options.youtubeBypass = options.youtubeBypass || "nocookie";
-  this.options.invidiousInstance = options.invidiousInstance || "invidious.io";
-  this.options.pipedInstance = options.invidiousInstance || "piped.kavin.rocks";
+  this.options = (options || {});
+  this.options.httpsUpgrade = (this.options.httpsUpgrade || true);
+  this.options.iframeOptions = (this.options.iframeOptions || {"referrerpolicy":"no-referrer"});
+  this.options.iframeOptions.referrerpolicy = (this.options.iframeOptions.referrerpolicy || "no-referrer");
     
-  if ((this.url.protocol == 'http:') && (this.options.httpsUpgrade == true)) { loadedUrl.protocol = 'https:'; };
-  if (((this.url.hostname == "youtube.com") || (this.url.hostname == "www.youtube.com"))) {
-    if ((this.url.pathname.startsWith('/shorts')) || (this.url.pathname.startsWith('/watch')) || (this.url.pathname.startsWith('/v/')) {
-      const params = new URLSearchParams(this.url.search)
-      if (this.url.pathname.startsWith('/watch')) { 
-        videoId = params.get('v')
-      } else {
-        videoId = this.url.pathname.split('/')[1]
-      }
-      loadedUrl.pathname = '/embed/' + videoId
-      for (const param of params) {
-          if (param.split(',')[0] == 'v') { return }
-          if (loadedUrl.search == '') {
-            loadedUrl.search = '?' + param.split(',').join('=')
-          } else {
-            loadedUrl.search = loadedUrl.search + '&' + param.split(',').join('=')
-          }
-        }
-    }
-    switch (this.options.youtubeBypass) {
-      case "none":
-        loadedUrl.hostname = this.url.hostname;
-        break;
-      case false:
-        loadedUrl.hostname = this.url.hostname;
-        break;
-      case "invidious":
-        loadedUrl.hostname = this.options.invidiousInstance;
-        break;
-      case "piped":
-        loadedUrl.hostname = this.options.pipedInstance;
-        break;
-      default:
-        loadedUrl.hostname = "youtube-nocookie.com";
-    }
-    this.options.iframeOptions.autoplay = options.iframeOptions.autoplay || 1;
-    loadedUrl.search = loadedUrl.search + '&autoplay=1'
-  }
-  alert(loadedUrl)
+  // replace all iframes
+  const iframes = document.getElementsByTagName('iframe');
+  iframes.forEach
 }
 
 // @license-end
