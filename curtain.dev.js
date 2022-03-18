@@ -14,13 +14,36 @@ window.Curtain = function Curtain(url, options) {
     
   // set default options
   this.options = (options || {});
+  this.options.moduleOptions = (this.options.moduleOptions || {});
   this.options.httpsUpgrade = (this.options.httpsUpgrade || true);
+  if ((this.url.protocol == 'http:') && (this.options.httpsUpgrade == true)) { loadedUrl.protocol = 'https:'; };
   this.options.iframeOptions = (this.options.iframeOptions || {"referrerpolicy":"no-referrer"});
   this.options.iframeOptions.referrerpolicy = (this.options.iframeOptions.referrerpolicy || "no-referrer");
     
   // replace all iframes
   const iframes = document.getElementsByTagName('iframe');
-  iframes.forEach
+  iframes.forEach(iframe => {
+    // base div
+    var curtainDiv = document.createElement("div");
+    
+    var frameDiv = document.createElement("div");
+    // modules
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        alert('it exists') 
+        // bless this being a private repo, this is not good prod!! thank you gh campus
+      }
+    };
+    xhttp.open("GET", ("modules/" + iframe.src.hostname + ".js"), true);
+    xhttp.send();
+    
+    var infoDiv = document.createElement("div");
+    infoDiv.innerHTML = "<p style="font-size:25%"><i style="font-size:25%">This embed will not be immediately served to protect your privacy.</i><a style="font-size:25%" href="#">Learn more...</a></p>
+    
+    curtainDiv.appendChild(frameDiv);
+    curtainDiv.appendChild(infoDiv);
+  })
 }
 
 // @license-end
