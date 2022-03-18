@@ -23,7 +23,7 @@ Here's how much MyTube takes up, also bringing in JQuery:
 
 Additionally, following the install instructions in `INSTALL.txt` leaves a server administrator with [] bytes used up.
 
-Curtain on it's own *does* take up more than MyTube standalone, sitting at [] UTF-8 bytes, so if you already use JQuery for your website, MyTube may be a better option if you want to reduce the size of your website. But if you don't use JQuery, Curtain's better.
+Curtain with every module *does* take up more than MyTube standalone, sitting at [] UTF-8 bytes. However, Curtain by itself only takes up [] UTF-8 bytes.
 
 # Features
 ## Referrer policy
