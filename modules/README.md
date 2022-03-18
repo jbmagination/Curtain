@@ -1,0 +1,1 @@
+In order to reduce the amount of bloat for the end-user, as well as the overall script, Curtain's custom website configurations are split up into modules. This simplifies the process of making changes.
