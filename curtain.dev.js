@@ -14,6 +14,7 @@ window.Curtain = function Curtain(options) {
     
   // replace all iframes
   const iframes = document.getElementsByTagName('iframe');
+  alert(iframes);
   iframes.forEach(iframe => {
     const loadedUrl = iframe.src;
     if ((iframe.src.protocol == 'http:') && (this.options.httpsUpgrade == true)) { loadedUrl.protocol = 'https:'; };
