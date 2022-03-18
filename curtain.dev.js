@@ -58,7 +58,7 @@ function Curtain(url, options) {
     this.options.iframeOptions.autoplay = options.iframeOptions.autoplay || 1;
     loadedUrl.search = loadedUrl.search + '&autoplay=1'
   }
-  console.log(loadedUrl)
+  alert(loadedUrl)
 }
 
 window.Curtain = Curtain;
