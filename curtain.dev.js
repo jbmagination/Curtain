@@ -18,7 +18,7 @@ window.Curtain = function Curtain(dir, options) {
   iframes.forEach(iframe => {
     const loadedUrl = iframe.src;
     if ((iframe.src.protocol == 'http:') && (this.options.httpsUpgrade == true)) { loadedUrl.protocol = 'https:'; };
-    if (!(window.Curtain.module[iframe.src.hostname]) || false) {
+    if (!(window.Curtain.module[new URL(iframe.src).hostname]) || false) {
       // load module
       var curtainModule = document.createElement('script');
       curtainModule.type = 'text/javascript';
@@ -27,14 +27,14 @@ window.Curtain = function Curtain(dir, options) {
       } else {
         var slash = '/'
       }
-      curtainModule.src = dir + slash + 'modules/' + iframe.src.hostname + '.js';
+      curtainModule.src = dir + slash + 'modules/' + new URL(iframe.src).hostname + '.js';
       document.currentScript.parentNode.insertBefore(curtainModule, document.currentScript.nextSibling);
     }
     // base divs
     var curtainDiv = document.createElement('div');
     var frameDiv = document.createElement('div');
     var infoDiv = document.createElement('div');
-    infoDiv.innerHTML = '<p style="font-size:25%"><i style="font-size:25%">Heads up: this embed will serve content from <a href="' + (window.Curtain.module[iframe.src.hostname].hostname || loadedUrl.hostname) + '">' + (window.Curtain.module[iframe.src.hostname].hostname || loadedUrl.hostname) + '</a>, a third-party website.</i><a style="font-size:25%" href="#">Learn more...</a></p>'
+    infoDiv.innerHTML = '<p style="font-size:25%"><i style="font-size:25%">Heads up: this embed will serve content from <a href="' + (window.Curtain.module[new URL(iframe.src).hostname].hostname || loadedUrl.hostname) + '">' + (window.Curtain.module[iframe.src.hostname].hostname || loadedUrl.hostname) + '</a>, a third-party website.</i><a style="font-size:25%" href="#">Learn more...</a></p>'
    
     curtainDiv.appendChild(frameDiv);
     curtainDiv.appendChild(infoDiv);
