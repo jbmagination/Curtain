@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <head>
   <script type="text/javascript" src="./curtain.dev.js"></script>
+  <script type="text/javascript">
+    window.onerror = function(msg, url, linenumber, colnumber) {
+        alert('Error message: '+msg+'\nURL: '+url+'\nLine\Col: '+linenumber+':'+colnumber);
+        return true;
+    }
+  </script>
 </head>
 <body>
   <h1>This is for testing purposes</h1>
