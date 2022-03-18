@@ -31,7 +31,7 @@ window.Curtain = function Curtain(url, options) {
     var curtainDiv = document.createElement('div');
     var frameDiv = document.createElement('div');
     var infoDiv = document.createElement('div');
-    infoDiv.innerHTML = '<p style="font-size:25%"><i style="font-size:25%">Heads up: this embed will serve content from <a href="' + (window.Curtain.module[iframe.src.hostname] || loadedUrl.hostname) + '">' + (window.Curtain.module[iframe.src.hostname] || loadedUrl.hostname) + '</a>, a third-party website.</i><a style="font-size:25%" href="#">Learn more...</a></p>'
+    infoDiv.innerHTML = '<p style="font-size:25%"><i style="font-size:25%">Heads up: this embed will serve content from <a href="' + (window.Curtain.module[iframe.src.hostname].hostname || loadedUrl.hostname) + '">' + (window.Curtain.module[iframe.src.hostname].hostname || loadedUrl.hostname) + '</a>, a third-party website.</i><a style="font-size:25%" href="#">Learn more...</a></p>'
    
     curtainDiv.appendChild(frameDiv);
     curtainDiv.appendChild(infoDiv);
