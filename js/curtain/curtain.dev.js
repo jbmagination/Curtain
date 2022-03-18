@@ -20,11 +20,10 @@ window.Curtain = function Curtain(options) {
     if ((iframe.src.protocol == 'http:') && (this.options.httpsUpgrade == true)) { loadedUrl.protocol = 'https:'; };
   //  if (!(window.Curtain.module[iframe.src.hostname]) || false) {
       // load module
-      const currentScript = document.getElementsByTagName('script')[document.getElementsByTagName('script').length-1];
       var curtainModule = document.createElement('script');
       curtainModule.type = 'text/javascript';
-      curtainModule.src = currentScript.src.split('?')[0].split('/').slice(0, -1).join('/') + '/modules/' + iframe.src.hostname + '.js';
-      currentScript.parentNode.insertBefore(curtainModule, currentScript.nextSibling);
+      curtainModule.src = document.currentScript.src.split('?')[0].split('/').slice(0, -1).join('/') + 'modules/' + iframe.src.hostname + '.js';
+      document.currentScript.parentNode.insertBefore(curtainModule, document.currentScript.nextSibling);
    // }
     // base divs
     var curtainDiv = document.createElement('div');
