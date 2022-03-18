@@ -27,10 +27,10 @@ function module(url, options) {
   }
   switch (this.options.youtubeAlt) {
       case "none":
-        urlToLoad.hostname = "www.youtube.com";
+        urlToLoad.host = "www.youtube.com";
         break;
       case false:
-        urlToLoad.hostname = "www.youtube.com";
+        urlToLoad.host = "www.youtube.com";
         break;
       case "invidious":
         urlToLoad.hostname = this.options.invidiousInstance;
@@ -39,10 +39,10 @@ function module(url, options) {
         urlToLoad.hostname = this.options.pipedInstance;
         break;
       default:
-        urlToLoad.hostname = "www.youtube-nocookie.com";
+        urlToLoad.host = "www.youtube-nocookie.com";
   }
   this.options.iframeOptions.autoplay = (this.options.iframeOptions.autoplay || 1);
-  return urlToLoad;
+  return new URL(urlToLoad);
 }
 
 window.Curtain.module['www.youtube.com'] = module;
