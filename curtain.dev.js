@@ -8,7 +8,7 @@ bugs. Use `curtain.min.js` instead. If it doesn't exist, then I don't
 know how you're here; this repository should be private.
 */
 
-export function Curtain(url, options) {
+function Curtain(url, options) {
   this.url = new URL(url);
   const loadedUrl = this.url;
     
@@ -60,5 +60,7 @@ export function Curtain(url, options) {
   }
   console.log(loadedUrl)
 }
+
+window.Curtain = Curtain;
 
 // @license-end
