@@ -35,6 +35,7 @@ window.Curtain = function Curtain(url, options) {
    
     curtainDiv.appendChild(frameDiv);
     curtainDiv.appendChild(infoDiv);
+    iframe.parentNode.replaceChild(curtainDiv, iframe);
   })
 }
 
