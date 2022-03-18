@@ -30,7 +30,7 @@ Curtain on it's own *does* take up more than MyTube standalone, sitting at [] UT
 MyTube does *not* set a referrer policy under `iframe` elements. The default referrer policy is `no-referrer-when-downgrade`, meaning HTTPS -> HTTPS connections *do* send referrer headers. This is a privacy problem; by default, Curtain sets the referrer policy to `no-referrer`.
 
 ## Domain changes
-You can get better privacy by changing the domain of a YouTube embed from `youtube.com` to `youtube-nocookie.com`. When you make this change, YouTube will add significantly less cookies to your browser. Curtain makes this change for you by default, and allows for many others; MyTube does not have such option.
+You can get better privacy when loading YouTube videos by changing the domain of a YouTube embed from `youtube.com` to `youtube-nocookie.com`. When you make this change, YouTube will add significantly less cookies to your browser. Curtain makes this change for you by default, and allows for many others; MyTube does not have such option.
 
 # Other differences
 * MyTube is under the GNU General Public License version 2, while Curtain is under the Apache 2.0 license
