@@ -13,8 +13,7 @@ window.Curtain = function Curtain(options) {
   this.options.iframeOptions.referrerpolicy = (this.options.iframeOptions.referrerpolicy || 'no-referrer');
     
   // replace all iframes
-  const iframes = document.getElementsByTagName('iframe');
-  alert(iframes);
+  const iframes = Array.from(document.getElementsByTagName('iframe'));
   iframes.forEach(iframe => {
     const loadedUrl = iframe.src;
     if ((iframe.src.protocol == 'http:') && (this.options.httpsUpgrade == true)) { loadedUrl.protocol = 'https:'; };
