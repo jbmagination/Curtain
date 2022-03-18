@@ -4,21 +4,19 @@
 Curtain v1.0.0
 */
 
-window.Curtain = function Curtain(url, options) {
-  this.url = new URL(url);
-  const loadedUrl = this.url;
-    
+window.Curtain = function Curtain(options) {
   // set default options
   this.options = (options || {});
   this.options.moduleOptions = (this.options.moduleOptions || {});
   this.options.httpsUpgrade = (this.options.httpsUpgrade || true);
-  if ((this.url.protocol == 'http:') && (this.options.httpsUpgrade == true)) { loadedUrl.protocol = 'https:'; };
   this.options.iframeOptions = (this.options.iframeOptions || {'referrerpolicy':'no-referrer'});
   this.options.iframeOptions.referrerpolicy = (this.options.iframeOptions.referrerpolicy || 'no-referrer');
     
   // replace all iframes
   const iframes = document.getElementsByTagName('iframe');
   iframes.forEach(iframe => {
+    const loadedUrl = iframe.src;
+    if ((iframe.src.protocol == 'http:') && (this.options.httpsUpgrade == true)) { loadedUrl.protocol = 'https:'; };
     if (!(window.Curtain.module[iframe.src.hostname])) {
       // load module
       const currentScript = document.getElementsByTagName('script')[document.getElementsByTagName('script').length-1];
