@@ -17,7 +17,7 @@ window.Curtain = function Curtain(options) {
   iframes.forEach(iframe => {
     const loadedUrl = iframe.src;
     if ((iframe.src.protocol == 'http:') && (this.options.httpsUpgrade == true)) { loadedUrl.protocol = 'https:'; };
-    if (!(window.Curtain.module[iframe.src.hostname])) {
+    if (!(window.Curtain.module[iframe.src.hostname]) || false) {
       // load module
       const currentScript = document.getElementsByTagName('script')[document.getElementsByTagName('script').length-1];
       var curtainModule = document.createElement('script');
