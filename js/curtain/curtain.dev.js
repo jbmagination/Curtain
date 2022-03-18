@@ -4,7 +4,7 @@
 Curtain v1.0.0
 */
 
-window.Curtain = function Curtain(options) {
+window.Curtain = function Curtain(dir, options) {
   // set default options
   this.options = (options || {});
   this.module = {};
@@ -18,13 +18,18 @@ window.Curtain = function Curtain(options) {
   iframes.forEach(iframe => {
     const loadedUrl = iframe.src;
     if ((iframe.src.protocol == 'http:') && (this.options.httpsUpgrade == true)) { loadedUrl.protocol = 'https:'; };
-  //  if (!(window.Curtain.module[iframe.src.hostname]) || false) {
+    if (!(window.Curtain.module[iframe.src.hostname]) || false) {
       // load module
       var curtainModule = document.createElement('script');
       curtainModule.type = 'text/javascript';
-      curtainModule.src = document.currentScript.src.split('?')[0].split('/').slice(0, -1).join('/') + 'modules/' + iframe.src.hostname + '.js';
+      if(dir.endsWith('/')) {
+        var slash = ''
+      } else {
+        var slash = '/'
+      }
+      curtainModule.src = dir + slash + 'modules/' + iframe.src.hostname + '.js';
       document.currentScript.parentNode.insertBefore(curtainModule, document.currentScript.nextSibling);
-   // }
+    }
     // base divs
     var curtainDiv = document.createElement('div');
     var frameDiv = document.createElement('div');
