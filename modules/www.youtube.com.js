@@ -44,3 +44,8 @@ function module(url, options) {
   this.options.iframeOptions.autoplay = (this.options.iframeOptions.autoplay || 1);
   return urlToLoad;
 }
+
+window.Curtain.module.www.youtube.com = module;
+window.Curtain.module.youtube.com = module;
+window.Curtain.module.youtube-nocookie.com = module;
+window.Curtain.module.www.youtube-nocookie.com = module;
