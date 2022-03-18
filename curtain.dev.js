@@ -7,6 +7,7 @@ Curtain v1.0.0
 window.Curtain = function Curtain(options) {
   // set default options
   this.options = (options || {});
+  this.module = {};
   this.options.moduleOptions = (this.options.moduleOptions || {});
   this.options.httpsUpgrade = (this.options.httpsUpgrade || true);
   this.options.iframeOptions = (this.options.iframeOptions || {'referrerpolicy':'no-referrer'});
