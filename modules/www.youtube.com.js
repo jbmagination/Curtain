@@ -45,7 +45,7 @@ function module(url, options) {
   return urlToLoad;
 }
 
-window.Curtain.module.www.youtube.com = module;
-window.Curtain.module.youtube.com = module;
-window.Curtain.module.youtube-nocookie.com = module;
-window.Curtain.module.www.youtube-nocookie.com = module;
+window.Curtain.module['www.youtube.com'] = module;
+window.Curtain.module['youtube.com'] = module;
+window.Curtain.module['youtube-nocookie.com'] = module;
+window.Curtain.module['www.youtube-nocookie.com'] = module;
