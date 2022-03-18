@@ -1,5 +1,9 @@
 function module(url, options) {
-  this.options.youtubeBypass = (this.options.youtubeBypass || "nocookie");
+  this.url = url;
+  this.options = options;
+  const urlToLoad = this.url;
+  
+  this.options.youtubeAlt = (this.options.youtubeAlt || "nocookie");
   this.options.invidiousInstance = (this.options.invidiousInstance || "invidious.io");
   this.options.pipedInstance = (this.options.invidiousInstance || "piped.kavin.rocks");
   
@@ -10,33 +14,33 @@ function module(url, options) {
     } else {
       videoId = this.url.pathname.split('/')[1];
     }
-      loadedUrl.pathname = '/embed/' + videoId;
+      urlToLoad.pathname = '/embed/' + videoId;
       for (const param of params) {
-        if (loadedUrl.search == '') {
-          loadedUrl.search = '?' + param.splice(',').join('=')
+        if (urlToLoad.search == '') {
+          urlToLoad.search = '?' + param.splice(',').join('=')
         } else {
           if (!(param.splice(',')[0] == 'v')) {
-            loadedUrl.search = loadedUrl.search + '&' + param.splice(',').join('=');
+            urlToLoad.search = urlToLoad.search + '&' + param.splice(',').join('=');
           }
         }
       }
   }
-  switch (this.options.youtubeBypass) {
+  switch (this.options.youtubeAlt) {
       case "none":
-        loadedUrl.hostname = this.url.hostname;
+        urlToLoad.hostname = "www.youtube.com";
         break;
       case false:
-        loadedUrl.hostname = this.url.hostname;
+        urlToLoad.hostname = "www.youtube.com";
         break;
       case "invidious":
-        loadedUrl.hostname = this.options.invidiousInstance;
+        urlToLoad.hostname = this.options.invidiousInstance;
         break;
       case "piped":
-        loadedUrl.hostname = this.options.pipedInstance;
+        urlToLoad.hostname = this.options.pipedInstance;
         break;
       default:
-        loadedUrl.hostname = "youtube-nocookie.com";
+        urlToLoad.hostname = "www.youtube-nocookie.com";
   }
   this.options.iframeOptions.autoplay = (this.options.iframeOptions.autoplay || 1);
-  return loadedUrl;
+  return urlToLoad;
 }
