@@ -1,5 +1,5 @@
 function module(url, options) {
-  this.url = url;
+  this.url = new URL(url);
   this.options = options;
   const urlToLoad = this.url;
   
