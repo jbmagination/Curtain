@@ -39,7 +39,7 @@ window.Curtain = function Curtain(url, options) {
     xhttp.send();
     
     var infoDiv = document.createElement("div");
-    infoDiv.innerHTML = "<p style="font-size:25%"><i style="font-size:25%">This embed will not be immediately served to protect your privacy.</i><a style="font-size:25%" href="#">Learn more...</a></p>
+    infoDiv.innerHTML = "<p style="font-size:25%"><i style="font-size:25%">Heads up: this embed will serve content from another website.</i><a style="font-size:25%" href="#">Learn more...</a></p>
     
     curtainDiv.appendChild(frameDiv);
     curtainDiv.appendChild(infoDiv);
