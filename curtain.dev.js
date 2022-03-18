@@ -8,6 +8,7 @@ window.Curtain = function Curtain(dir, options) {
   // set default options
   this.options = (options || {});
   this.module = {};
+  window.Curtain.module = this.module;
   this.options.moduleOptions = (this.options.moduleOptions || {});
   this.options.httpsUpgrade = (this.options.httpsUpgrade || true);
   this.options.iframeOptions = (this.options.iframeOptions || {'referrerpolicy':'no-referrer'});
