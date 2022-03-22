@@ -1,9 +1,15 @@
 <!DOCTYPE html>
 <head>
+   <script type="text/javascript">
+    window.onerror = function(msg, url, linenumber, colnumber) {
+        alert('Error message: '+msg+'\nURL: '+url+'\nLine\Col: '+linenumber+':'+colnumber);
+        return true;
+    }
+  </script>
 </head>
 <body>
   <h1>This is for testing purposes</h1>
   <p>If you see this page, <i>please go away</i></p>
 
-  <iframe width="640" height="315" src="https://www.youtube-nocookie.com/embed/Vb5a73FBPaM" title="YouTube video player" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture" sandbox="allow-scripts allow-presentation allow-popups allow-same-origin" allowfullscreen></iframe>
+  <iframe width="640" height="315" src="https://www.youtube-nocookie.com/embed/Vb5a73FBPaM" title="YouTube video player" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture" sandbox="allow-scripts allow-presentation allow-popups" allowfullscreen></iframe>
 </body>
